@@ -6,6 +6,6 @@ public class Camel extends Herbivores implements Land{
 
     @Override
     public void walk() {
-        System.out.println("Camel walk");
+        System.out.println("Camel flying");
     }
 }

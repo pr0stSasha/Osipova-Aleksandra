@@ -8,6 +8,6 @@ public class Dolphin extends Predator implements Waterfowl {
 
     @Override
     public void swim() {
-        System.out.println("Dolphin swimming");
+        System.out.println("Dolphin flying");
     }
 }
