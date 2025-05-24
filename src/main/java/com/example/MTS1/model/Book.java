@@ -4,26 +4,23 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "book")
-@Getter
-@Setter
+@Table(name = "books")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
+
     private String author;
 
     @ManyToOne
-    @JoinColumn(name = "university_id")
-    private University university;
+    @JoinColumn(name = "user_id")
+    private User owner;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private Course course;
+
 }

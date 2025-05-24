@@ -2,27 +2,35 @@ package com.example.MTS1.controller;
 
 import com.example.MTS1.model.Book;
 import com.example.MTS1.service.BookService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
-@RequiredArgsConstructor
+@RequestMapping("/api/books")
 public class BookController {
-
     private final BookService bookService;
 
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
     @GetMapping
-    public List<Book> getAllBooks() {
+    public List<Book> listBooks() {
         return bookService.getAllBooks();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
-        Book book = bookService.getBookById(id);
-        return ResponseEntity.ok(book);
+    @PostMapping
+    public Book createBook(@RequestBody Book book) {
+        return bookService.addNewBook(book);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> findBook(@PathVariable Long id) {
+        return bookService.getBookById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
