@@ -1,18 +1,27 @@
 server:
-  port: 8080  # порт, на котором работает приложение
+  port: 8080
 
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb # подключение к H2 в памяти
+    url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
     password:
 
   jpa:
     hibernate:
-      ddl-auto: create  # при запуске пересоздаёт таблицы
-    show-sql: true  # печатать SQL-запросы в консоль
+      ddl-auto: create
+    show-sql: true
 
 logging:
   level:
-    root: INFO  # уровень логгирования
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "shutdown"
+  server:
+    base-path: /admin

@@ -36,7 +36,10 @@ class UserControllerWebMvcTest {
 
     @Test
     void testGetUserById_ReturnsUser() throws Exception {
-        User user = new User(1L, "John", "john@example.com", null, null);
+        User user =  User.builder()
+                .name("Alice")
+                .email("alice@example.com")
+                .build();
         given(userService.findUserById(1L)).willReturn(Optional.of(user));
 
         mockMvc.perform(get("/api/users/1"))
@@ -46,8 +49,14 @@ class UserControllerWebMvcTest {
 
     @Test
     void testCreateUser_ReturnsCreated() throws Exception {
-        User user = new User(null, "Alice", "alice@example.com", null, null);
-        User saved = new User(1L, "Alice", "alice@example.com", null, null);
+        User user = User.builder()
+                .name("Alice")
+                .email("alice@example.com")
+                .build();
+        User saved =  User.builder()
+                .name("Alice")
+                .email("alice@example.com")
+                .build();
 
         given(userService.saveUser(any(User.class))).willReturn(saved);
 

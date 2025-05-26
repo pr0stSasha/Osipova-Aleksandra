@@ -40,7 +40,10 @@ class UserControllerE2ETest {
 
     @Test
     void testCreateUser() {
-        User user = new User(null, "Alice", "alice@example.com", null, null);
+        User user =  User.builder()
+                .name("Alice")
+                .email("alice@example.com")
+                .build();
         ResponseEntity<User> response = restTemplate.postForEntity(baseUrl, user, User.class);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());

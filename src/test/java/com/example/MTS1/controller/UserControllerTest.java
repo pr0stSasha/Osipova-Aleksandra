@@ -31,7 +31,10 @@ class UserControllerTest {
 
     @Test
     void getUserById_shouldReturnUser_whenExists() throws Exception {
-        User user = new User(1L, "Alice", "alice@example.com", null, null);
+        User user =  User.builder()
+                .name("Alice")
+                .email("alice@example.com")
+                .build();
         Mockito.when(userService.findUserById(1L)).thenReturn(Optional.of(user));
 
         mockMvc.perform(get("/api/users/1"))
@@ -41,7 +44,10 @@ class UserControllerTest {
 
     @Test
     void getAllUsers_shouldReturnListOfUsers() throws Exception {
-        List<User> users = List.of(new User(1L, "Bob", "bob@example.com", null, null));
+        List<User> users = List.of(User.builder()
+                .name("Alice")
+                .email("alice@example.com")
+                .build());
         Mockito.when(userService.findAllUsers()).thenReturn(users);
 
         mockMvc.perform(get("/api/users"))

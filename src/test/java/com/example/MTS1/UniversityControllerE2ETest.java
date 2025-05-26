@@ -1,6 +1,7 @@
 package com.example.MTS1;
 
 import com.example.MTS1.model.University;
+import com.example.MTS1.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,10 @@ class UniversityControllerE2ETest {
 
     @Test
     void testCreateUniversity() {
-        University university = new University(null, "MIT", "USA", null);
+        University university = University.builder()
+                .name("MIT")
+                .location("USA")
+                .build();
         ResponseEntity<University> response = restTemplate.postForEntity(baseUrl, university, University.class);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
