@@ -1,5 +1,6 @@
 package com.example.MTS1.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,8 +20,7 @@ public class Book {
     private String author;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "owner_id")
+    @JsonBackReference("user-books")
     private User owner;
-
-
 }

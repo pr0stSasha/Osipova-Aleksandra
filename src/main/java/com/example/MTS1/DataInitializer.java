@@ -3,7 +3,6 @@ package com.example.MTS1;
 import com.example.MTS1.model.*;
 import com.example.MTS1.repository.*;
 import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

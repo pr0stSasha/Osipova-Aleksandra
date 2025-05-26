@@ -15,17 +15,14 @@ public class UniversityService {
         this.universityRepository = universityRepository;
     }
 
-    // Получить список университетов
     public List<University> fetchAllUniversities() {
         return universityRepository.findAll();
     }
 
-    // Добавить университет
     public University addUniversity(University university) {
         return universityRepository.save(university);
     }
 
-    // Получить университет по ID
     public Optional<University> getUniversityById(Long id) {
         return universityRepository.findById(id);
     }

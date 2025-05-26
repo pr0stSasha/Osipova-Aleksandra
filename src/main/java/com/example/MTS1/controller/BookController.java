@@ -18,17 +18,17 @@ public class BookController {
 
     @GetMapping
     public List<Book> listBooks() {
-        return bookService.getAllBooks();
+        return bookService.fetchAllBooks();
     }
 
     @PostMapping
     public Book createBook(@RequestBody Book book) {
-        return bookService.addNewBook(book);
+        return bookService.registerBook(book);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Book> findBook(@PathVariable Long id) {
-        return bookService.getBookById(id)
+    public ResponseEntity<Book> getBook(@PathVariable Long id) {
+        return bookService.findBookById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
