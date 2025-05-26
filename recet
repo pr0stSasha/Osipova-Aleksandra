@@ -1,0 +1,15 @@
+[33m6e515c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msem2-homework1[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{0}: reset: moving to HEAD~2
+[33me3a1fe5[m[33m ([m[1;31morigin/sem2-homework1[m[33m)[m HEAD@{1}: commit: Removed the cyclic dependency
+[33m5a7ba8a[m HEAD@{2}: commit: add controllers
+[33m6e515c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msem2-homework1[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{3}: rebase (finish): returning to refs/heads/sem2-homework1
+[33m6e515c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msem2-homework1[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{4}: rebase (start): checkout refs/heads/master
+[33m8981948[m[33m ([m[1;31morigin/homework1[m[33m, [m[1;32mhomework1[m[33m)[m HEAD@{5}: checkout: moving from master to sem2-homework1
+[33m6e515c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msem2-homework1[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{6}: rebase (finish): returning to refs/heads/master
+[33m6e515c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msem2-homework1[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{7}: rebase (continue): Initial commit
+[33mc0096a9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{8}: rebase (start): checkout origin/master
+[33m8981948[m[33m ([m[1;31morigin/homework1[m[33m, [m[1;32mhomework1[m[33m)[m HEAD@{9}: checkout: moving from sem2-homework1 to master
+[33m8981948[m[33m ([m[1;31morigin/homework1[m[33m, [m[1;32mhomework1[m[33m)[m HEAD@{10}: checkout: moving from homework1 to sem2-homework1
+[33m8981948[m[33m ([m[1;31morigin/homework1[m[33m, [m[1;32mhomework1[m[33m)[m HEAD@{11}: checkout: moving from sem2-homework1 to homework1
+[33m8981948[m[33m ([m[1;31morigin/homework1[m[33m, [m[1;32mhomework1[m[33m)[m HEAD@{12}: checkout: moving from homework1 to sem2-homework1
+[33m8981948[m[33m ([m[1;31morigin/homework1[m[33m, [m[1;32mhomework1[m[33m)[m HEAD@{13}: checkout: moving from master to homework1
+[33m8981948[m[33m ([m[1;31morigin/homework1[m[33m, [m[1;32mhomework1[m[33m)[m HEAD@{14}: commit (initial): Initial commit
