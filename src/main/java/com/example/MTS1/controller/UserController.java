@@ -3,6 +3,7 @@ package com.example.MTS1.controller;
 import com.example.MTS1.api.UserControllerDocs;
 import com.example.MTS1.model.User;
 import com.example.MTS1.service.UserService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,10 @@ public class UserController implements UserControllerDocs {
 
     private final UserService userService;
 
-    @GetMapping
+    @RateLimiter(name = "userController")
+    @GetMapping("/users")
     public List<User> getAllUsers() {
-        return userService.findAllUsers();
+        return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")

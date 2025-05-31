@@ -3,11 +3,13 @@ package com.example.MTS1.controller;
 import com.example.MTS1.api.CourseControllerDocs;
 import com.example.MTS1.model.Course;
 import com.example.MTS1.service.CourseService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -17,10 +19,14 @@ public class CourseController implements CourseControllerDocs {
 
     private final CourseService courseService;
 
-    // 2 GET
-    @GetMapping
+    @CircuitBreaker(name = "courseController", fallbackMethod = "fallback")
+    @GetMapping("/courses")
     public List<Course> getAllCourses() {
         return courseService.findAllCourses();
+    }
+
+    public ResponseEntity<List<Course>> fallback(Throwable t) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(Collections.emptyList());
     }
 
     @GetMapping("/{id}")

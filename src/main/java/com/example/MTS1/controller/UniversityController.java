@@ -3,11 +3,14 @@ package com.example.MTS1.controller;
 import com.example.MTS1.api.UniversityControllerDocs;
 import com.example.MTS1.model.University;
 import com.example.MTS1.service.UniversityService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -17,9 +20,15 @@ public class UniversityController implements UniversityControllerDocs {
 
     private final UniversityService universityService;
 
-    @GetMapping
+    @CircuitBreaker(name = "universityController", fallbackMethod = "fallback")
+    @RateLimiter(name = "universityController")
+    @GetMapping("/universities")
     public List<University> getAllUniversities() {
         return universityService.findAllUniversities();
+    }
+
+    public ResponseEntity<List<University>> fallback(Throwable t) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(Collections.emptyList());
     }
 
     @GetMapping("/{id}")

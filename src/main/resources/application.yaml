@@ -34,13 +34,19 @@ management:
 resilience4j:
   ratelimiter:
     instances:
-      defaultRateLimiter:
-        limit-for-period: 5
-        limit-refresh-period: 10s
-        timeout-duration: 500ms
+      userController:
+        limitForPeriod: 5
+        limitRefreshPeriod: 10s
+        timeoutDuration: 0
   circuitbreaker:
     instances:
-      defaultCircuitBreaker:
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 30s
-        sliding-window-size: 10
+      courseController:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+  timelimiter:
+    instances:
+      universityController:
+        timeoutDuration: 3s
